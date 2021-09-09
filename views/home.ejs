@@ -1,130 +1,114 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>EXTRA MILE</title>
-
-    <!-- Favicon-->
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-
-    <!-- Bootstrap Core Css -->
-    <link href="public/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Waves Effect Css -->
-    <link href="public/plugins/node-waves/waves.css" rel="stylesheet" />
-
-    <!-- Animation Css -->
-    <link href="public/plugins/animate-css/animate.css" rel="stylesheet" />
-
-    <!-- Light Gallery Plugin Css -->
-    <link href="public/plugins/light-gallery/css/lightgallery.css" rel="stylesheet">
-
-    <!-- Custom Css -->
-    <link href="public/css/style.css" rel="stylesheet">
-
-    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-    <link href="public/css/themes/all-themes.css" rel="stylesheet" />
-</head>
+<%- include('./partials/top')%>
 
 <body class="theme-red">
 
-    <!-- Top Bar -->
-    <nav class="navbar">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
-                <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="/">EXTRA-MILE</a>
-            </div>
-        </div>
-    </nav>
-    <!-- #Top Bar -->
-    <section>
-        <!-- Left Sidebar -->
-        <aside id="leftsidebar" class="sidebar">
-            <!-- User Info -->
-            <div class="user-info">
-                <div class="image">
-                    <img src="public/images/user.png" width="48" height="48" alt="User" />
-                </div>
-                <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">EXTRA-MILE</div>
-                </div>
-            </div>
-            <!-- #User Info -->
-            <!-- Menu -->
-            <div class="menu">
-                <ul class="list">
-                    <li class="header">MAIN NAVIGATION</li>
-                    <li>
-                        <a href="/">
-                            <i class="material-icons">home</i>
-                            <span>Home</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="public/pages/typography.html">
-                            <i class="material-icons">text_fields</i>
-                            <span>Typography</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <!-- #Menu -->
-            <!-- Footer -->
-            <div class="legal">
-                <div class="copyright">
-                    &copy; 2021 <a href="javascript:void(0);">EXTRA MILE</a>.
-                </div>
-            </div>
-            <!-- #Footer -->
-        </aside>
-        <!-- #END# Left Sidebar -->
-    </section>
+
+    <%- include('./partials/topBar')%>
+    <%- include('./partials/navBar')%>
 
     <section class="content">
         <div class="container-fluid">
-            <!-- Image Gallery -->
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
-                        <h1>Enter Details</h1>
+                        <div class="header">
+
+                            <h1>Enter Details</h1>
+                        </div>
+                        <table class="table">
+                            <tr>
+                                <td>
+                                    <h5>Select Company</h5>
+                                </td>
+                                <td>
+                                    <div class="col-sm-6">
+                                        <select class="form-control">
+                                            <option value="">-- Please select company--</option>
+                                            <option value="Audi">Audi</option>
+                                            <option value="20">20</option>
+                                            <option value="30">30</option>
+                                            <option value="40">40</option>
+                                            <option value="50">50</option>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5>Select Model</h5>
+                                </td>
+                                <td>
+                                    <div class="col-sm-6">
+                                        <select class="form-control">
+                                            <option value="">-- Please select model--</option>
+                                            <option value="10">10</option>
+                                            <option value="20">20</option>
+                                            <option value="30">30</option>
+                                            <option value="40">40</option>
+                                            <option value="50">50</option>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5>Select Engine Type(Petrol/Diesel)</h5>
+                                </td>
+                                <td>
+                                    <div class="col-sm-6">
+                                        <select class="form-control">
+                                            <option value="">-- Please select type--</option>
+                                            <option value="Petrol">Petrol</option>
+                                            <option value="Diesel">Diesel</option>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5>Select Job</h5>
+                                </td>
+                                <td>
+                                    <div class="demo-checkbox">
+                                        <input type="checkbox" id="basic_checkbox_2" class="filled-in" />
+                                        <label for="basic_checkbox_2">Service</label>
+                                        <input type="checkbox" id="basic_checkbox_21" class="filled-in" />
+                                        <label for="basic_checkbox_21">Repair</label>
+                                        <input type="checkbox" id="basic_checkbox_22" class="filled-in" />
+                                        <label for="basic_checkbox_22">Washing</label>
+                                        <input type="checkbox" id="basic_checkbox_23" class="filled-in" />
+                                        <label for="basic_checkbox_23">Denting Painting</label>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </table>
+                        <div style="text-align: center;">
+                            <button type="button" class="btn bg-orange waves-effect">
+                                <i class="material-icons">save</i>
+                                <span>SAVE</span>
+                            </button>
+                        </div>
+                        <br>
+
+
+                        <!-- <div class="row clearfix">
+                        <div class="col-sm-6">
+                            <select class="form-control">
+                                <option value="">-- Please select car model--</option>
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="40">40</option>
+                                <option value="50">50</option>
+                            </select>
+                        </div>
+                    </div> -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Jquery Core Js -->
-    <script src="public/plugins/jquery/jquery.min.js"></script>
 
-    <!-- Bootstrap Core Js -->
-    <script src="public/plugins/bootstrap/js/bootstrap.js"></script>
-
-    <!-- Select Plugin Js -->
-    <script src="public/plugins/bootstrap-select/js/bootstrap-select.js"></script>
-
-    <!-- Slimscroll Plugin Js -->
-    <script src="public/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-
-    <!-- Waves Effect Plugin Js -->
-    <script src="public/plugins/node-waves/waves.js"></script>
-
-    <!-- Light Gallery Plugin Js -->
-    <script src="public/plugins/light-gallery/js/lightgallery-all.js"></script>
-
-    <!-- Custom Js -->
-    <script src="public/js/pages/medias/image-gallery.js"></script>
-    <script src="public/js/admin.js"></script>
-
-    <!-- Demo Js -->
-    <script src="public/js/demo.js"></script>
-</body>
-
-</html>
+    <%- include('./partials/bottom')%>
