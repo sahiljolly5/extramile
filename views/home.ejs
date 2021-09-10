@@ -15,6 +15,7 @@
 
                             <h1>Enter Details</h1>
                         </div>
+                        <form action="/postDataSave" method="POST">
                         <table class="table">
                             <tr>
                                 <td>
@@ -22,13 +23,13 @@
                                 </td>
                                 <td>
                                     <div class="col-sm-6">
-                                        <select class="form-control">
-                                            <option value="">-- Please select company--</option>
+                                        <select class="form-control" name="company" id="company">
+                                            <option value="0">-- Please select company--</option>
                                             <option value="Audi">Audi</option>
-                                            <option value="20">20</option>
-                                            <option value="30">30</option>
-                                            <option value="40">40</option>
-                                            <option value="50">50</option>
+                                            <option value="BMW">BMW</option>
+                                            <option value="Honda">Honda</option>
+                                            <option value="Maruti">Maruti</option>
+                                            <option value="Hyundai">Hyundai</option>
                                         </select>
                                     </div>
                                 </td>
@@ -39,13 +40,8 @@
                                 </td>
                                 <td>
                                     <div class="col-sm-6">
-                                        <select class="form-control">
+                                        <select class="form-control" name="model" id="model">
                                             <option value="">-- Please select model--</option>
-                                            <option value="10">10</option>
-                                            <option value="20">20</option>
-                                            <option value="30">30</option>
-                                            <option value="40">40</option>
-                                            <option value="50">50</option>
                                         </select>
                                     </div>
                                 </td>
@@ -56,7 +52,7 @@
                                 </td>
                                 <td>
                                     <div class="col-sm-6">
-                                        <select class="form-control">
+                                        <select class="form-control"  name="engineType">
                                             <option value="">-- Please select type--</option>
                                             <option value="Petrol">Petrol</option>
                                             <option value="Diesel">Diesel</option>
@@ -70,13 +66,13 @@
                                 </td>
                                 <td>
                                     <div class="demo-checkbox">
-                                        <input type="checkbox" id="basic_checkbox_2" class="filled-in" />
+                                        <input type="checkbox" id="basic_checkbox_2" class="filled-in" name="service" />
                                         <label for="basic_checkbox_2">Service</label>
-                                        <input type="checkbox" id="basic_checkbox_21" class="filled-in" />
+                                        <input type="checkbox" id="basic_checkbox_21" class="filled-in" name="repair"/>
                                         <label for="basic_checkbox_21">Repair</label>
-                                        <input type="checkbox" id="basic_checkbox_22" class="filled-in" />
+                                        <input type="checkbox" id="basic_checkbox_22" class="filled-in" name="washing"/>
                                         <label for="basic_checkbox_22">Washing</label>
-                                        <input type="checkbox" id="basic_checkbox_23" class="filled-in" />
+                                        <input type="checkbox" id="basic_checkbox_23" class="filled-in" name="paint"/>
                                         <label for="basic_checkbox_23">Denting Painting</label>
                                     </div>
                                 </td>
@@ -84,12 +80,11 @@
 
                         </table>
                         <div style="text-align: center;">
-                            <button type="button" class="btn bg-orange waves-effect">
-                                <i class="material-icons">save</i>
-                                <span>SAVE</span>
-                            </button>
+                            <input type="submit" class="btn bg-orange waves-effect">
+                            </input>
                         </div>
                         <br>
+                    </form>
 
 
                         <!-- <div class="row clearfix">
@@ -109,6 +104,26 @@
             </div>
         </div>
     </section>
-
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+<script>
+$(document).ready(function () {
+    $("#company").change(function () {
+        var val = $(this).val();
+        if (val == "Audi") {
+            $("#model").html("<option value='A4'>A4</option><option value='A6'>A6</option>");
+        } else if (val == "BMW") {
+            $("#model").html("<option value='3 Series'>3 Series</option><option value='5 Series'>5 Series</option>");
+        } else if (val == "Honda") {
+            $("#model").html("<option value='City'>City</option><option value='BRV'>BRV</option>");
+        } else if (val == "Maruti") {
+            $("#model").html("<option value='Swift'>Swift</option><option value='Ciaz'>Ciaz</option>");
+        } else if (val == "Hyundai") {
+            $("#model").html("<option value='i20'>i20</option><option value='Verna'>Verna</option>");
+        } else if (val == "0") {
+            $("#model").html("<option value=''>--Please select model--</option>");
+        }
+    });
+});
+</script>
 
     <%- include('./partials/bottom')%>
