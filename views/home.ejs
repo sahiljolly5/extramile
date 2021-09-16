@@ -23,7 +23,7 @@
                                 </td>
                                 <td>
                                     <div class="col-sm-6">
-                                        <select class="form-control" name="company" id="company">
+                                        <select name="company" id="companySel" onchange="ChangeCarList()">
                                             <option value="0">-- Please select company--</option>
                                             <option value="Audi">Audi</option>
                                             <option value="BMW">BMW</option>
@@ -39,10 +39,57 @@
                                     <h5>Select Model</h5>
                                 </td>
                                 <td>
-                                    <div class="col-sm-6">
-                                        <select class="form-control" name="model" id="model">
+                                    <div class="col-sm-6"">
+                                        <div style="display: block;" id="sel">
+                                        <select name="model" id="modelSel" style="display: block;" >
                                             <option value="">-- Please select model--</option>
                                         </select>
+                                    </div>
+                                        <div style="display: none;" id="selAudi">
+                                            
+                                                <select name="model" id="modelAudi">
+                                                    <option value="">-- Please select model--</option>
+                                                    <option value="">A4</option>
+                                                    <option value="">A6</option>
+                                                </select>
+                                        </div>
+                                        <div style="display: none;" id="selBMW">
+                                            
+                                            <select name="model" id="modelBMW" style="display: none;" >
+                                                <option value="">-- Please select model--</option>
+                                                <option value="">M3</option>
+                                                <option value="">X7</option>
+                                                <option value="">3 series</option>
+                                                <option value="">5 Series</option>
+                                            </select>
+                                        </div>
+                                        <div style="display: none;" id="selHonda">
+                                            
+                                            <select name="model" id="modelBMW" style="display: none;" >
+                                                <option value="">-- Please select model--</option>
+                                                <option value="">Amaze</option>
+                                                <option value="">City</option>
+                                                <option value="">CRV</option>
+                                            </select>
+                                        </div>
+                                        <div style="display: none;" id="selHyundai">
+                                            
+                                            <select name="model" id="modelBMW" style="display: none;" >
+                                                <option value="">-- Please select model--</option>
+                                                <option value="">i20</option>
+                                                <option value="">Verna</option>
+                                                <option value="">Creta</option>
+                                            </select>
+                                        </div>
+                                        <div style="display: none;" id="selMaruti">
+                                            
+                                            <select name="model" id="modelBMW" style="display: none;" >
+                                                <option value="">-- Please select model--</option>
+                                                <option value="">Ciaz</option>
+                                                <option value="">Swift</option>
+                                                <option value="">Brezza</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
@@ -85,27 +132,71 @@
                         </div>
                         <br>
                     </form>
-
-
-                        <!-- <div class="row clearfix">
-                        <div class="col-sm-6">
-                            <select class="form-control">
-                                <option value="">-- Please select car model--</option>
-                                <option value="10">10</option>
-                                <option value="20">20</option>
-                                <option value="30">30</option>
-                                <option value="40">40</option>
-                                <option value="50">50</option>
-                            </select>
-                        </div>
-                    </div> -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <script>
+        function ChangeCarList() {
+            var company = document.getElementById("companySel").value;
+
+            if(company == 'Audi') {
+                document.getElementById('sel').style.display = 'none'
+                document.getElementById('selAudi').style.display = 'block'
+                document.getElementById('selBMW').style.display = 'none'
+                document.getElementById('selHonda').style.display = 'none'
+                document.getElementById('selHyundai').style.display = 'none'
+                document.getElementById('selMaruti').style.display = 'none'
+
+            }
+            else if(company == 'BMW') {
+                document.getElementById('sel').style.display = 'none'
+                document.getElementById('selAudi').style.display = 'none'
+                document.getElementById('selBMW').style.display = 'block'
+                document.getElementById('selHonda').style.display = 'none'
+                document.getElementById('selHyundai').style.display = 'none'
+                document.getElementById('selMaruti').style.display = 'none'
+            }
+            else if(company == 'Honda') {
+                document.getElementById('sel').style.display = 'none'
+                document.getElementById('selAudi').style.display = 'none'
+                document.getElementById('selBMW').style.display = 'none'
+                document.getElementById('selHonda').style.display = 'block'
+                document.getElementById('selHyundai').style.display = 'none'
+                document.getElementById('selMaruti').style.display = 'none' 
+            }
+            else if(company == 'Hyundai') {
+                document.getElementById('sel').style.display = 'none'
+                document.getElementById('selAudi').style.display = 'none'
+                document.getElementById('selBMW').style.display = 'none'
+                document.getElementById('selHonda').style.display = 'none'
+                document.getElementById('selHyundai').style.display = 'block'
+                document.getElementById('selMaruti').style.display = 'none'
+            }
+            else if(company == 'Maruti') {
+                document.getElementById('sel').style.display = 'none'
+                document.getElementById('selAudi').style.display = 'none'
+                document.getElementById('selBMW').style.display = 'none'
+                document.getElementById('selHonda').style.display = 'none'
+                document.getElementById('selHyundai').style.display = 'none'
+                document.getElementById('selMaruti').style.display = 'block'
+            }
+            else {
+                document.getElementById('sel').style.display = 'block'
+                document.getElementById('selAudi').style.display = 'none'
+                document.getElementById('selBMW').style.display = 'none'
+                document.getElementById('selHonda').style.display = 'none'
+                document.getElementById('selHyundai').style.display = 'none'
+                document.getElementById('selMaruti').style.display = 'none'
+            }
+            // console.log(carList.value);
+            // if(carList.va)
+        }
+    </script>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
-<script>
+<!-- <script>
 $(document).ready(function () {
     $("#company").change(function () {
         var val = $(this).val();
@@ -124,6 +215,31 @@ $(document).ready(function () {
         }
     });
 });
-</script>
+</script> -->
+<!-- <script>
+    var carsAndModels = {};
+    carsAndModels['Audi'] = ['A4', 'A6', 'Q7'];
+    carsAndModels['Honda'] = ['City', 'WRV','Amaze'];
+    carsAndModels['BMW'] = ['M6', 'X5', 'Z3'];
+    carsAndModels['Maruti'] = ['Swift', 'Ciaz', 'Alto', 'Brezza'];
+    carsAndModels['Hyundai'] = ['i20', 'Verna', 'Creta'];
+    
+    function ChangeCarList() {
+      var carList = document.getElementById("companySel");
+      var modelList = document.getElementById("modelSel");
+      var selCar = carList.options[carList.selectedIndex].value;
+      while (modelList.options.length) {
+        modelList.remove(0);
+      }
+      var cars = carsAndModels[selCar];
+      if (cars) {
+        var i;
+        for (i = 0; i < cars.length; i++) {
+          var car = new Option(cars[i], i);
+          document.getElementById("modelSel").options.add(car);
+        }
+      }
+    } 
+    </script> -->
 
     <%- include('./partials/bottom')%>
