@@ -14,7 +14,6 @@ app.set('view engine','ejs')
 
 app.use('/',routes)
 
-
 mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true

@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const User = require('../models/user')
+const Service = require('../models/service')
 
 router.get('/',(req,res) => {
     res.render('signin',{err:''})
@@ -44,8 +45,33 @@ router.post('/postSignup',async (req,res) => {
 })
 
 router.post('/postDataSave',async (req,res) => {
-    console.log(req.body);
+    var data = req.body
+    var arr = []
+    if(data.service == 'on') {
+        arr.push('service')
+    }
+    if(data.repair == 'on') {
+        arr.push('repair')
+    }
+    if(data.washing == 'on') {
+        arr.push('washing')
+    }
+    if(data.painting == 'on') {
+        arr.push('painting')
+    }
+    if(data.denting == 'on') {
+        arr.push('denting')
+    }
+
+    var _service = {
+        company : data.company,
+        model : data.model,
+        engineType  : data.engineType,
+        jobs : arr
+    }
+    const result = await new Service(_service).save()
+
 })
 
-
 module.exports = router
+

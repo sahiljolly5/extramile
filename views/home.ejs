@@ -41,53 +41,53 @@
                                 <td>
                                     <div class="col-sm-6"">
                                         <div style="display: block;" id="sel">
-                                        <select name="model" id="modelSel" style="display: block;" >
+                                        <!-- <select name="model" id="modelSel" >
                                             <option value="">-- Please select model--</option>
-                                        </select>
+                                        </select> -->
                                     </div>
                                         <div style="display: none;" id="selAudi">
                                             
                                                 <select name="model" id="modelAudi">
                                                     <option value="">-- Please select model--</option>
-                                                    <option value="">A4</option>
-                                                    <option value="">A6</option>
+                                                    <option value="A4">A4</option>
+                                                    <option value="A6">A6</option>
                                                 </select>
                                         </div>
                                         <div style="display: none;" id="selBMW">
                                             
-                                            <select name="model" id="modelBMW" style="display: none;" >
+                                            <select name="model" id="modelBMW" >
                                                 <option value="">-- Please select model--</option>
-                                                <option value="">M3</option>
-                                                <option value="">X7</option>
-                                                <option value="">3 series</option>
-                                                <option value="">5 Series</option>
+                                                <option value="M3">M3</option>
+                                                <option value="X7">X7</option>
+                                                <option value="3 Series">3 series</option>
+                                                <option value="5 Series">5 Series</option>
                                             </select>
                                         </div>
                                         <div style="display: none;" id="selHonda">
                                             
-                                            <select name="model" id="modelBMW" style="display: none;" >
+                                            <select name="model" id="modelHonda" >
                                                 <option value="">-- Please select model--</option>
-                                                <option value="">Amaze</option>
-                                                <option value="">City</option>
-                                                <option value="">CRV</option>
+                                                <option value="Amaze">Amaze</option>
+                                                <option value="City">City</option>
+                                                <option value="CRV">CRV</option>
                                             </select>
                                         </div>
                                         <div style="display: none;" id="selHyundai">
                                             
-                                            <select name="model" id="modelBMW" style="display: none;" >
+                                            <select name="model" id="modelHyundai">
                                                 <option value="">-- Please select model--</option>
-                                                <option value="">i20</option>
-                                                <option value="">Verna</option>
-                                                <option value="">Creta</option>
+                                                <option value="i20">i20</option>
+                                                <option value="Verna">Verna</option>
+                                                <option value="Creta">Creta</option>
                                             </select>
                                         </div>
                                         <div style="display: none;" id="selMaruti">
                                             
-                                            <select name="model" id="modelBMW" style="display: none;" >
+                                            <select name="model" id="modelMaruti">
                                                 <option value="">-- Please select model--</option>
-                                                <option value="">Ciaz</option>
-                                                <option value="">Swift</option>
-                                                <option value="">Brezza</option>
+                                                <option value="Ciaz">Ciaz</option>
+                                                <option value="Swift">Swift</option>
+                                                <option value="Brezza">Brezza</option>
                                             </select>
                                         </div>
                                     </div>
@@ -119,8 +119,10 @@
                                         <label for="basic_checkbox_21">Repair</label>
                                         <input type="checkbox" id="basic_checkbox_22" class="filled-in" name="washing"/>
                                         <label for="basic_checkbox_22">Washing</label>
-                                        <input type="checkbox" id="basic_checkbox_23" class="filled-in" name="paint"/>
-                                        <label for="basic_checkbox_23">Denting Painting</label>
+                                        <input type="checkbox" id="basic_checkbox_23" class="filled-in" name="denting"/>
+                                        <label for="basic_checkbox_23">Denting</label>
+                                        <input type="checkbox" id="basic_checkbox_24" class="filled-in" name="painting"/>
+                                        <label for="basic_checkbox_24">Painting</label>
                                     </div>
                                 </td>
                             </tr>
@@ -141,6 +143,11 @@
     <script>
         function ChangeCarList() {
             var company = document.getElementById("companySel").value;
+            var AudiModel = document.getElementById("modelAudi")
+            var BMWModel = document.getElementById("modelBMW")
+            var HondaModel = document.getElementById("modelHonda")
+            var HyundaiModel = document.getElementById("modelHyundai")
+            var MarutiModel = document.getElementById("modelMaruti")
 
             if(company == 'Audi') {
                 document.getElementById('sel').style.display = 'none'
@@ -149,6 +156,11 @@
                 document.getElementById('selHonda').style.display = 'none'
                 document.getElementById('selHyundai').style.display = 'none'
                 document.getElementById('selMaruti').style.display = 'none'
+                AudiModel.disabled = false
+                BMWModel.disabled = true
+                HondaModel.disabled = true
+                HyundaiModel.disabled = true
+                MarutiModel.disabled = true
 
             }
             else if(company == 'BMW') {
@@ -158,6 +170,11 @@
                 document.getElementById('selHonda').style.display = 'none'
                 document.getElementById('selHyundai').style.display = 'none'
                 document.getElementById('selMaruti').style.display = 'none'
+                AudiModel.disabled = true
+                BMWModel.disabled = false
+                HondaModel.disabled = true
+                HyundaiModel.disabled = true
+                MarutiModel.disabled = true
             }
             else if(company == 'Honda') {
                 document.getElementById('sel').style.display = 'none'
@@ -166,6 +183,11 @@
                 document.getElementById('selHonda').style.display = 'block'
                 document.getElementById('selHyundai').style.display = 'none'
                 document.getElementById('selMaruti').style.display = 'none' 
+                AudiModel.disabled = true
+                BMWModel.disabled = true
+                HondaModel.disabled = false
+                HyundaiModel.disabled = true
+                MarutiModel.disabled = true
             }
             else if(company == 'Hyundai') {
                 document.getElementById('sel').style.display = 'none'
@@ -174,6 +196,11 @@
                 document.getElementById('selHonda').style.display = 'none'
                 document.getElementById('selHyundai').style.display = 'block'
                 document.getElementById('selMaruti').style.display = 'none'
+                AudiModel.disabled = true
+                BMWModel.disabled = true
+                HondaModel.disabled = true
+                HyundaiModel.disabled = false
+                MarutiModel.disabled = true
             }
             else if(company == 'Maruti') {
                 document.getElementById('sel').style.display = 'none'
@@ -182,6 +209,11 @@
                 document.getElementById('selHonda').style.display = 'none'
                 document.getElementById('selHyundai').style.display = 'none'
                 document.getElementById('selMaruti').style.display = 'block'
+                AudiModel.disabled = true
+                BMWModel.disabled = true
+                HondaModel.disabled = true
+                HyundaiModel.disabled = true
+                MarutiModel.disabled = false
             }
             else {
                 document.getElementById('sel').style.display = 'block'
@@ -190,6 +222,11 @@
                 document.getElementById('selHonda').style.display = 'none'
                 document.getElementById('selHyundai').style.display = 'none'
                 document.getElementById('selMaruti').style.display = 'none'
+                AudiModel.disabled = true
+                BMWModel.disabled = true
+                HondaModel.disabled = true
+                HyundaiModel.disabled = true
+                MarutiModel.disabled = true
             }
             // console.log(carList.value);
             // if(carList.va)
