@@ -70,7 +70,14 @@ router.post('/postDataSave',async (req,res) => {
         jobs : arr
     }
     const result = await new Service(_service).save()
+    res.render('home')
 
+})
+
+router.get('/services',async (req,res) => {
+    const data = await Service.find({})
+    // console.log(data);
+    res.render('services',{data:data})
 })
 
 module.exports = router

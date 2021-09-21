@@ -232,51 +232,5 @@
             // if(carList.va)
         }
     </script>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
-<!-- <script>
-$(document).ready(function () {
-    $("#company").change(function () {
-        var val = $(this).val();
-        if (val == "Audi") {
-            $("#model").html("<option value='A4'>A4</option><option value='A6'>A6</option>");
-        } else if (val == "BMW") {
-            $("#model").html("<option value='3 Series'>3 Series</option><option value='5 Series'>5 Series</option>");
-        } else if (val == "Honda") {
-            $("#model").html("<option value='City'>City</option><option value='BRV'>BRV</option>");
-        } else if (val == "Maruti") {
-            $("#model").html("<option value='Swift'>Swift</option><option value='Ciaz'>Ciaz</option>");
-        } else if (val == "Hyundai") {
-            $("#model").html("<option value='i20'>i20</option><option value='Verna'>Verna</option>");
-        } else if (val == "0") {
-            $("#model").html("<option value=''>--Please select model--</option>");
-        }
-    });
-});
-</script> -->
-<!-- <script>
-    var carsAndModels = {};
-    carsAndModels['Audi'] = ['A4', 'A6', 'Q7'];
-    carsAndModels['Honda'] = ['City', 'WRV','Amaze'];
-    carsAndModels['BMW'] = ['M6', 'X5', 'Z3'];
-    carsAndModels['Maruti'] = ['Swift', 'Ciaz', 'Alto', 'Brezza'];
-    carsAndModels['Hyundai'] = ['i20', 'Verna', 'Creta'];
-    
-    function ChangeCarList() {
-      var carList = document.getElementById("companySel");
-      var modelList = document.getElementById("modelSel");
-      var selCar = carList.options[carList.selectedIndex].value;
-      while (modelList.options.length) {
-        modelList.remove(0);
-      }
-      var cars = carsAndModels[selCar];
-      if (cars) {
-        var i;
-        for (i = 0; i < cars.length; i++) {
-          var car = new Option(cars[i], i);
-          document.getElementById("modelSel").options.add(car);
-        }
-      }
-    } 
-    </script> -->
 
-    <%- include('./partials/bottom')%>
+ <%- include('./partials/bottom')%>
