@@ -8,19 +8,13 @@
 
     <section class="content">
         <div class="container-fluid">
-            <div class="block-header">
-                <h2>
-                    JQUERY DATATABLES
-                    <small>Taken from <a href="https://datatables.net/" target="_blank">datatables.net</a></small>
-                </h2>
-            </div>
             <!-- Basic Examples -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
                             <h2>
-                                BASIC EXAMPLE
+                                ALL SERVICES
                             </h2>
                         </div>
                         <div class="body">
@@ -29,6 +23,7 @@
                                     <thead>
                                         <tr>
                                             <th>Order ID</th>
+                                            <th>User Name</th>
                                             <th>Company</th>
                                             <th>Model</th>
                                             <th>Engine Type</th>
@@ -38,6 +33,7 @@
                                     <tfoot>
                                         <tr>
                                             <th>Order ID</th>
+                                            <th>User Name</th>
                                             <th>Company</th>
                                             <th>Model</th>
                                             <th>Engine Type</th>
@@ -48,6 +44,7 @@
                                         <% data.forEach(function(doc) {%>
                                         <tr>
                                             <td><%= doc._id%></td>
+                                            <td><%= doc.userName%></td>
                                             <td><%= doc.company%></td>
                                             <td><%= doc.model%></td>
                                             <td><%= doc.engineType%></td>

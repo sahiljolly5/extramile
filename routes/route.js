@@ -1,12 +1,18 @@
 const router = require('express').Router()
 const User = require('../models/user')
 const Service = require('../models/service')
+const Auth = require('../middleware/auth')
 
 router.get('/',(req,res) => {
     res.render('signin',{err:''})
 })
 
-router.get('/home',(req,res) => {
+router.get('/logout',(req,res) => {
+    req.session.destroy()
+    res.render('signin',{err:''})
+})
+
+router.get('/home',Auth,(req,res) => {
     res.render('home')
 })
 
@@ -20,6 +26,9 @@ router.post('/postSignin',async (req,res) => {
     var password = req.body.password
     const result = await User.find({email:email,password:password})
     if(result.length > 0 ) {
+
+        req.session.user = result[0]
+        req.session.save()
         res.redirect('home')
     }
     else {
@@ -64,6 +73,8 @@ router.post('/postDataSave',async (req,res) => {
     }
 
     var _service = {
+        UserId:req.session.user._id,
+        userName:req.session.user.name,
         company : data.company,
         model : data.model,
         engineType  : data.engineType,
