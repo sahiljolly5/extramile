@@ -1,0 +1,26 @@
+<table class="table">
+                                        <tr>
+                                            <th>Order ID</th>
+                                            <th><%= data._id%></th>
+                                        </tr>
+                                        <tr>
+                                            <th>User Name</th>
+                                            <th><%= data.userName%></th>
+                                        </tr>
+                                        <tr>
+                                            <th>Company</th>
+                                            <th><%= data.company%></th>
+                                        </tr>
+                                        <tr>
+                                            <th>Model</th>
+                                            <th><%= data.model%></th>
+                                        </tr>
+                                        <tr>
+                                            <th>Engine Type</th>
+                                            <th><%= data.engineType%></th>
+                                        </tr>
+                                        <tr>
+                                            <th>Jobs</th>
+                                            <th><%= data.jobs%></th>
+                                        </tr>
+                                </table>

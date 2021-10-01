@@ -43,7 +43,7 @@
                                     <tbody>
                                         <% data.forEach(function(doc) {%>
                                         <tr>
-                                            <td><%= doc._id%></td>
+                                            <td><a href="/serviceDetail/<%= doc._id%>"><%= doc._id%></a></td>
                                             <td><%= doc.userName%></td>
                                             <td><%= doc.company%></td>
                                             <td><%= doc.model%></td>

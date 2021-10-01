@@ -14,7 +14,7 @@ var store = new MongoDBStore({
 });
 
 
-app.use('/public',express.static('public'))
+app.use(express.static('public'))
 app.use(express.urlencoded({extended:true}))
 
 app.set('views','views')
