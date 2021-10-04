@@ -15,6 +15,7 @@
 
                             <h1>Service Details</h1>
                         </div>
+                        <form action="/updateService" method="post">
                         <table class="table">
                             <tr>
                                 <th>Order ID</th>
@@ -40,7 +41,32 @@
                                 <th>Jobs</th>
                                 <th><%= data.jobs%></th>
                             </tr>
+                            <tr>
+                                <th>Parts Added</th>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Total</th>
+                                <td>Rs. XXXXXX</td>
+                            </tr>
+                            <tr>
+                                <th>Select Part</th>
+                                <td>
+                                    <div class="col-sm-6">
+                                        <select class="form-control"  name="parts">
+                                            <option value="">-- Please select parts--</option>
+                                            <% for(var i = 0;i<parts.length;i++) {%>
+                                            <option value="<%= parts[i]%>"><%= parts[i][0]%></option>
+                                            <% } %>
+                                        </select>
+                                    </div>
+                                    <input type="submit" class="btn bg-orange waves-effect">
+                                </input>
+                                </td>
+                            </tr>
                     </table>
+                </form>
                         <br>
                     </div>
                 </div>

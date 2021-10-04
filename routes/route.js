@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const User = require('../models/user')
 const Service = require('../models/service')
+const Parts = require('../models/parts')
 const Auth = require('../middleware/auth')
 const nodemailer = require("nodemailer");
 
@@ -50,7 +51,8 @@ router.get('/logout',(req,res) => {
     res.render('signin',{err:''})
 })
 
-router.get('/home',Auth,(req,res) => {
+router.get('/home',Auth,async (req,res) => {
+
     res.render('home')
 })
 
@@ -132,8 +134,17 @@ router.get('/services',async (req,res) => {
 router.get('/serviceDetail/:id',async (req,res) => {
     const id = req.params.id
     const data = await Service.find({_id:id})
+    const parts = await Parts.find({})
+    console.log(parts[0].parts);
     // console.log(data);
-    res.render('details',{data:data[0]})
+    res.render('details',{data:data[0],parts:parts[0].parts})
+})
+
+router.post('/updateService',async (req,res) => {
+
+    let part = req.body.parts.split(',')[0]
+    let price = req.body.parts.split(',')[1]
+    console.log(price);
 })
 
 router.get('/serviceDetail',async (req,res) => {
