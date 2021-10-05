@@ -33,7 +33,14 @@ const serviceSchema = new Schema({
         type: Array,
         required:true,
         trim: true
-    }}
+    },
+    parts:{
+        type: Array
+    },
+    cost:{
+        type:Number
+    }
+}
 );
 
 module.exports = mongoose.model("Service", serviceSchema);

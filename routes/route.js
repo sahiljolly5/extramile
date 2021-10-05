@@ -118,7 +118,9 @@ router.post('/postDataSave',async (req,res) => {
         company : data.company,
         model : data.model,
         engineType  : data.engineType,
-        jobs : arr
+        jobs : arr,
+        parts : [],
+        cost : 0
     }
     const result = await new Service(_service).save()
     res.render('home')
@@ -135,23 +137,28 @@ router.get('/serviceDetail/:id',async (req,res) => {
     const id = req.params.id
     const data = await Service.find({_id:id})
     const parts = await Parts.find({})
-    console.log(parts[0].parts);
+    // console.log(parts[0].parts);
     // console.log(data);
     res.render('details',{data:data[0],parts:parts[0].parts})
 })
 
-router.post('/updateService',async (req,res) => {
+router.post('/updateService/:id',async (req,res) => {
 
+    const id = req.params.id
     let part = req.body.parts.split(',')[0]
-    let price = req.body.parts.split(',')[1]
-    console.log(price);
-})
+    let price = parseInt(req.body.parts.split(',')[1])
+    let service = await Service.find({_id:id})
 
-router.get('/serviceDetail',async (req,res) => {
-    // const id = req.params.id
-    const data = await Service.find({_id:'614ad8dc3e58f51017715e1b'})
-    // console.log(data);
-    res.render('details',{data:data[0]})
+    let serviceParts = service[0].parts
+    let serviceCost = parseInt(service[0].cost)
+    
+    serviceParts.push(part)
+    serviceCost += price
+
+    const result = await Service.findByIdAndUpdate(id,{parts:serviceParts,cost:serviceCost},{new:true})
+    const parts = await Parts.find({})
+    // console.log(result);
+    res.render('details',{data:result,parts:parts[0].parts})
 })
 
 

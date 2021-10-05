@@ -10,12 +10,14 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <a href="" class="btn bg-pink btn-block btn-lg waves-effect">   </a>
                     <div class="card">
+                        
                         <div class="header">
 
                             <h1>Service Details</h1>
                         </div>
-                        <form action="/updateService" method="post">
+                        <form action="/updateService/<%= data._id%>" method="post">
                         <table class="table">
                             <tr>
                                 <th>Order ID</th>
@@ -43,12 +45,12 @@
                             </tr>
                             <tr>
                                 <th>Parts Added</th>
-                                <td>
-                                </td>
+                                <th><%= data.parts%>
+                                </th>
                             </tr>
                             <tr>
                                 <th>Total</th>
-                                <td>Rs. XXXXXX</td>
+                                <th>Rs. <%= data.cost%></th>
                             </tr>
                             <tr>
                                 <th>Select Part</th>
@@ -65,8 +67,12 @@
                                 </input>
                                 </td>
                             </tr>
+                            <tr>
+                                
+                            </tr>
                     </table>
                 </form>
+                <a href="" class="btn bg-pink btn-block btn-lg waves-effect">Final Submit</a>
                         <br>
                     </div>
                 </div>
