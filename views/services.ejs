@@ -30,6 +30,7 @@
                                             <th>Jobs</th>
                                             <th>Parts</th>
                                             <th>Cost</th>
+                                            <th>Generate Bill</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -42,6 +43,7 @@
                                             <th>Jobs</th>
                                             <th>Parts</th>
                                             <th>Cost</th>
+                                            <th>Generate Bill</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -55,6 +57,7 @@
                                             <td><%= doc.jobs%></td>
                                             <td><%= doc.parts%></td>
                                             <td><%= doc.cost%></td>
+                                            <td><a href="/pdfmake/<%= doc._id%>">Generate Bill</a></td>
                                         </tr>  
                                         <% }) %>                   
                                     </tbody>

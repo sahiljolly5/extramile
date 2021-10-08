@@ -1,26 +1,35 @@
-<table class="table">
-                                        <tr>
-                                            <th>Order ID</th>
-                                            <th><%= data._id%></th>
-                                        </tr>
-                                        <tr>
-                                            <th>User Name</th>
-                                            <th><%= data.userName%></th>
-                                        </tr>
-                                        <tr>
-                                            <th>Company</th>
-                                            <th><%= data.company%></th>
-                                        </tr>
-                                        <tr>
-                                            <th>Model</th>
-                                            <th><%= data.model%></th>
-                                        </tr>
-                                        <tr>
-                                            <th>Engine Type</th>
-                                            <th><%= data.engineType%></th>
-                                        </tr>
-                                        <tr>
-                                            <th>Jobs</th>
-                                            <th><%= data.jobs%></th>
-                                        </tr>
-                                </table>
+const fs = require('fs');
+var path = require('path');
+const ejs = require('ejs');
+const pdf = require('html-pdf');
+
+
+const data = {
+    font: {
+        "color" : "green",
+        "include": "https://api.****.com/parser/v3/css/combined?face=Kruti%20Dev%20010,Calibri,DevLys%20010,Arial,Times%20New%20Roman"
+    },
+    testData: [
+    {
+        "name": "<p><span class=\"T1\" style=\"font-family:'DevLys 010'; margin: 0;\">0-06537 esa 5 dk LFkuh; eku gS&</span></p>"
+    } ]
+};  
+const gethtmltopdf = async () => {
+    try {
+        
+        const filePathName = path.resolve(__dirname, 'htmltopdf.ejs');
+        const htmlString = fs.readFileSync(filePathName).toString();
+        let  options = { format: 'Letter' };
+        const ejsData = ejs.render(htmlString, data);
+        return await pdf.create(ejsData, options).toFile('generatedfile.pdf',(err, response) => {
+            if (err) return console.log(err);
+            return response;
+        });
+       
+    } catch (err) {
+        console.log("Error processing request: " + err);
+    }
+
+
+}
+gethtmltopdf();

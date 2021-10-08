@@ -22,6 +22,11 @@ const userSchema = new Schema({
         type: String,
         required:true,
         trim: true
+    },
+    admin: {
+        type: Boolean,
+        required:true,
+        trim: true
     }}
     );
 

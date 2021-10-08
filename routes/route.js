@@ -2,8 +2,25 @@ const router = require('express').Router()
 const User = require('../models/user')
 const Service = require('../models/service')
 const Parts = require('../models/parts')
-const Auth = require('../middleware/auth')
+const isUser = require('../middleware/isUser')
+const isAdmin = require('../middleware/isAdmin')
 const nodemailer = require("nodemailer");
+
+const fs = require('fs');
+// const pdf = require('pdf-creator-node');
+var path = require('path');
+const ejs = require('ejs');
+const pdf = require('html-pdf');
+
+const options = {
+    format: "A4",
+    orientation: "portrait",
+    border: "10mm",
+    // header: {
+    //     height: "20mm",
+    //     contents: '<h4 style="text-align: center">HEALTH DEPARTMENT, YAMUNA NAGAR (HARYANA)</h4>'
+    // },   
+}
 
 require('dotenv').config()
 
@@ -11,12 +28,12 @@ let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
     secure: true,
-    auth: {
+    isUser: {
       user: process.env.MAIL, // generated ethereal user
       pass: process.env.PASS, // generated ethereal password
     },
     tls:{
-        rejectUnauthorized: false
+        rejectUnisUserorized: false
     }
   });
 
@@ -51,9 +68,13 @@ router.get('/logout',(req,res) => {
     res.render('signin',{err:''})
 })
 
-router.get('/home',Auth,async (req,res) => {
+router.get('/home',isUser,async (req,res) => {
 
-    res.render('home')
+    if(req.session.user.admin) {
+
+        return res.render('home',{admin:true})
+    }
+    return res.render('home',{admin:false})
 })
 
 router.get('/signup',(req,res) => {
@@ -86,11 +107,12 @@ router.post('/postSignup',async (req,res) => {
         name:req.body.name,
         email:req.body.email,
         phone:req.body.phone,
-        password:req.body.password
+        password:req.body.password,
+        admin:false
     }
     const result = await new User(data).save()
     // console.log(result);
-    // res.render('signup')
+    res.render('signup')
 })
 
 router.post('/postDataSave',async (req,res) => {
@@ -123,14 +145,15 @@ router.post('/postDataSave',async (req,res) => {
         cost : 0
     }
     const result = await new Service(_service).save()
-    res.render('home')
+    
+    return res.render('home',{admin:req.session.user.admin})
 
 })
 
 router.get('/services',async (req,res) => {
     const data = await Service.find({})
     // console.log(data);
-    res.render('services',{data:data})
+    res.render('services',{data:data,admin:req.session.user.admin})
 })
 
 router.get('/serviceDetail/:id',async (req,res) => {
@@ -139,7 +162,7 @@ router.get('/serviceDetail/:id',async (req,res) => {
     const parts = await Parts.find({})
     // console.log(parts[0].parts);
     // console.log(data);
-    res.render('details',{data:data[0],parts:parts[0].parts})
+    res.render('details',{data:data[0],parts:parts[0].parts,admin:req.session.user.admin})
 })
 
 router.post('/updateService/:id',async (req,res) => {
@@ -158,7 +181,7 @@ router.post('/updateService/:id',async (req,res) => {
     const result = await Service.findByIdAndUpdate(id,{parts:serviceParts,cost:serviceCost},{new:true})
     const parts = await Parts.find({})
     // console.log(result);
-    res.render('details',{data:result,parts:parts[0].parts})
+    res.render('details',{data:result,parts:parts[0].parts,admin:req.session.user.admin})
 })
 
 
@@ -189,5 +212,56 @@ router.post('/sendMail',(req,res) => {
           console.log(err);
       })
 })
-module.exports = router
 
+
+router.get('/pdfmake/:id', async (req,res) => {
+    
+    let id = req.params.id
+    const doc = await Service.find({_id:id})
+    // console.log(doc[0]);
+//     const html = fs.readFileSync('files/bill2.html', 'utf8');
+//             //console.log(html);
+//     var data = doc[0]
+//             // console.log(data);
+//     var document = {
+//                 html: html,
+//                 data: data,
+//                 path: `./files/${data._id}.pdf`
+//     }
+//     let output = await pdf.create(document, options)
+//         // .then((response) => {
+//         //     //console.log(response);
+//         //     //const file = fs.readFileSync()
+//         //     if (!response){
+//         //         return 0;
+//         //     }
+
+//         //     res.sendFile(response.filename)
+//         //     //fs.unlinkSync(response.filename);
+
+//         // })
+// })
+const data = doc[0];
+
+const gethtmltopdf = async () => {
+    try {
+        
+        const filePathName = path.resolve(__dirname, '../views/bill.ejs');
+        const htmlString = fs.readFileSync(filePathName).toString();
+        let  options = { format: 'Letter' };
+        const ejsData = ejs.render(htmlString, data);
+        return await pdf.create(ejsData, options).toFile('generatedfile.pdf',(err, response) => {
+            if (err) return console.log(err);
+            return response;
+        });
+       
+    } catch (err) {
+        console.log("Error processing request: " + err);
+    }
+}
+gethtmltopdf();
+
+})
+
+
+module.exports = router
