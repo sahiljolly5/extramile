@@ -6,7 +6,8 @@ var MongoDBStore = require('connect-mongodb-session')(session);
 
 const routes = require('./routes/route')
 
-const uri = 'mongodb://localhost:27017/extramile'
+// const uri = 'mongodb://localhost:27017/extramile'
+const uri = 'mongodb+srv://admin:admin123@cluster0.ohj2o.mongodb.net/extramile?retryWrites=true&w=majority'
 
 var store = new MongoDBStore({
   uri: uri,

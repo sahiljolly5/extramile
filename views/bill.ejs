@@ -150,12 +150,12 @@
 
 
 								<td>
-									Acme Corp.<br />
-									John Doe<br />
-									john@example.com
+									<%= userInfo.name%><br />
+									<%= userInfo.phone%><br />
+									<%= userInfo.email%>
 								</td>
                                 <td>
-									Invoice #: 123<br />
+									Invoice #: <%= info._id%><br />
 									Created: January 1, 2015<br />
 									Due: February 1, 2015
 								</td>
@@ -183,22 +183,22 @@
 				</tr>
 
 				<tr class="item">
-					<td>Parts Added</td>
+					<td>Parts Added :- <%= info.parts%></td>
 
-					<td><%=cost%></td>
+					<td>₹<%=info.cost%></td>
 				</tr>
 
 				<tr class="item">
 					<td>Labour Charges</td>
 
-					<tr>75.00</td>
+					<td>₹250</td>
 				</tr>
 
 
 				<tr class="total">
 					<td></td>
 
-					<td>Total: $385.00</td>
+					<td>Total: ₹<%= info.cost + 250%></td>
 				</tr>
 			</table>
 		</div>

@@ -218,48 +218,28 @@ router.get('/pdfmake/:id', async (req,res) => {
     
     let id = req.params.id
     const doc = await Service.find({_id:id})
-    // console.log(doc[0]);
-//     const html = fs.readFileSync('files/bill2.html', 'utf8');
-//             //console.log(html);
-//     var data = doc[0]
-//             // console.log(data);
-//     var document = {
-//                 html: html,
-//                 data: data,
-//                 path: `./files/${data._id}.pdf`
-//     }
-//     let output = await pdf.create(document, options)
-//         // .then((response) => {
-//         //     //console.log(response);
-//         //     //const file = fs.readFileSync()
-//         //     if (!response){
-//         //         return 0;
-//         //     }
+    // console.log(doc[0]._id);
+    let user = await User.find({_id:doc[0].UserId})
+    console.log(user);
 
-//         //     res.sendFile(response.filename)
-//         //     //fs.unlinkSync(response.filename);
 
-//         // })
-// })
-const data = doc[0];
+    const data = {info : doc[0], userInfo : user[0]};
 
-const gethtmltopdf = async () => {
     try {
         
         const filePathName = path.resolve(__dirname, '../views/bill.ejs');
         const htmlString = fs.readFileSync(filePathName).toString();
-        let  options = { format: 'Letter' };
+        let  options = { format: 'A4',base:`${req.protocol}://${req.get("host")}` };
         const ejsData = ejs.render(htmlString, data);
-        return await pdf.create(ejsData, options).toFile('generatedfile.pdf',(err, response) => {
+        await pdf.create(ejsData, options).toFile(`bills/${data.info._id}.pdf`,(err, response) => {
             if (err) return console.log(err);
-            return response;
+            return res.sendFile(response.filename);
         });
        
     } catch (err) {
         console.log("Error processing request: " + err);
     }
-}
-gethtmltopdf();
+
 
 })
 
