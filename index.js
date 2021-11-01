@@ -3,11 +3,12 @@ const mongoose = require('mongoose')
 const app = express()
 const session = require('express-session')
 var MongoDBStore = require('connect-mongodb-session')(session);
-
+require('dotenv').config()
 const routes = require('./routes/route')
 
 // const uri = 'mongodb://localhost:27017/extramile'
-const uri = 'mongodb+srv://admin:admin123@cluster0.ohj2o.mongodb.net/extramile?retryWrites=true&w=majority'
+const uri = process.env.MONGO_URL
+const PORT = process.env.PORT || 8080
 
 var store = new MongoDBStore({
   uri: uri,
@@ -37,7 +38,7 @@ mongoose.connect(uri, {
   }).
     then(result => {
       console.log("DB Connected!");
-      app.listen(8080, () => {
+      app.listen(PORT, () => {
         console.log("App Is Running On 8080.");
       })
     }).
