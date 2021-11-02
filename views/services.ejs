@@ -1,75 +1,67 @@
-<%- include('./partials/top')%>
+<%- include('./frontpartials/top')%>
+<%- include('./frontpartials/navbar')%>
 
-<body class="theme-red">
+<section class="services">
+    <div class="container">
+       <h2>Our Services</h2>
+        <div class="row">
+            <div class="col-sm-12 col-12 box-1"  data-aos="fade-up" data-aos-delay="300">
+                <div class="row box">
+                    <div class="col-sm-1 col-12">
+                        <i class="fa fa-desktop" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-sm-11 col-12">
+                        <h3>CONVENIENT.</h3>
+                        <p>
+                            Lets stay home & stay safe</p>
+                           <p> That's the best thing you can do right now to keep your loved ones safe because staying at home everyday keeps Corona away.</p>
 
+                            <p>Service right at your doorstep.Help you to stay home and save lives.Online payments. Hassle free and safe.Fast delivery. We value your time.</p>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-12 box-2"  data-aos="fade-up" data-aos-delay="300">
+                <div class="row box">
+                    <div class="col-sm-1 col-12">
+                        <i class="fa fa-code" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-sm-11 col-12">
+                        <h3>TRANSPARENT.</h3>
+                        
+                        <p>To let you enjoy your peace of mind</p>
+<p>We fix even your trust in car service and repair because we have build our business on trust</p>
+<p>Up front pricing.Restoring your trust in car service.Automatic diagnostics.Service beyond the standards.Real time updates.Where every detail counts.
 
-    <%- include('./partials/topBar')%>
-    <%- include('./partials/navBar')%>
-
-    <section class="content">
-        <div class="container-fluid">
-            <!-- Basic Examples -->
-            <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                ALL SERVICES
-                            </h2>
-                        </div>
-                        <div class="body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                                    <thead>
-                                        <tr>
-                                            <th>Order ID</th>
-                                            <th>User Name</th>
-                                            <th>Company</th>
-                                            <th>Model</th>
-                                            <th>Engine Type</th>
-                                            <th>Jobs</th>
-                                            <th>Parts</th>
-                                            <th>Cost</th>
-                                            <th>Generate Bill</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Order ID</th>
-                                            <th>User Name</th>
-                                            <th>Company</th>
-                                            <th>Model</th>
-                                            <th>Engine Type</th>
-                                            <th>Jobs</th>
-                                            <th>Parts</th>
-                                            <th>Cost</th>
-                                            <th>Generate Bill</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <% data.forEach(function(doc) {%>
-                                        <tr>
-                                            <td><a href="/serviceDetail/<%= doc._id%>"><%= doc._id%></a></td>
-                                            <td><%= doc.userName%></td>
-                                            <td><%= doc.company%></td>
-                                            <td><%= doc.model%></td>
-                                            <td><%= doc.engineType%></td>
-                                            <td><%= doc.jobs%></td>
-                                            <td><%= doc.parts%></td>
-                                            <td><%= doc.cost%></td>
-                                            <td><a href="/pdfmake/<%= doc._id%>">Generate Bill</a></td>
-                                        </tr>  
-                                        <% }) %>                   
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-12 box-2"  data-aos="fade-up" data-aos-delay="300">
+                <div class="row box">
+                    <div class="col-sm-1 col-12">
+                        <i class="fa fa-cogs" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-sm-11 col-12">
+                        <h3>support.</h3>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five</p>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-12 box-2"  data-aos="fade-up" data-aos-delay="300">
+                <div class="row box">
+                    <div class="col-sm-1 col-12">
+                        <i class="fa fa-suitcase" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-sm-11 col-12">
+                        <h3>coding.</h3>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five</p>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-
-    
-    <%- include('./partials/bottom')%>
+<%- include('./frontpartials/bottom')%>
