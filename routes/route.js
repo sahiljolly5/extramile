@@ -60,6 +60,22 @@ const upload = multer({ storage: storage,
     }, })
 
 router.get('/',(req,res) => {
+    res.render('home')
+})
+
+router.get('/about',(req,res) => {
+    res.render('about')
+})
+
+router.get('/services',(req,res) => {
+    res.render('services')
+})
+
+router.get('/contact',(req,res) => {
+    res.render('contact')
+})
+
+router.get('/signin',(req,res) => {
     res.render('signin',{err:''})
 })
 
@@ -68,13 +84,13 @@ router.get('/logout',(req,res) => {
     res.render('signin',{err:''})
 })
 
-router.get('/home',isUser,async (req,res) => {
+router.get('/addservice',isUser,async (req,res) => {
 
     if(req.session.user.admin) {
 
-        return res.render('home',{admin:true})
+        return res.render('addservice',{admin:true})
     }
-    return res.render('home',{admin:false})
+    return res.render('addservice',{admin:false})
 })
 
 router.get('/signup',(req,res) => {
@@ -150,10 +166,10 @@ router.post('/postDataSave',async (req,res) => {
 
 })
 
-router.get('/services',async (req,res) => {
+router.get('/viewservices',async (req,res) => {
     const data = await Service.find({})
     // console.log(data);
-    res.render('services',{data:data,admin:req.session.user.admin})
+    res.render('viewservices',{data:data,admin:req.session.user.admin})
 })
 
 router.get('/serviceDetail/:id',async (req,res) => {
@@ -206,6 +222,26 @@ router.post('/sendMail',(req,res) => {
         subject: "Message from extra mile",
         text: "Plaintext version of the message",
         html: "<h1>thank you for contacting extra mile. We will be with you shortly"
+      };
+
+      transporter.sendMail(message,(err) => {
+          console.log(err);
+      })
+})
+
+router.post('/contactmail',(req,res) => {
+    console.log(req.body);
+
+    const message = {
+        from: process.env.MAIL,
+        to: process.env.MAIL,
+        subject: `You Got Message from ${req.body.name}`,
+        html: `
+        <h2>Name : ${req.body.name}</h2>
+        <h2>Email : ${req.body.email}</h2>
+        <h2>Phone : ${req.body.phone}</h2>
+        <h2>Message : ${req.body.message}</h2>
+        `
       };
 
       transporter.sendMail(message,(err) => {
