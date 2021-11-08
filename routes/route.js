@@ -106,7 +106,7 @@ router.post('/postSignin',async (req,res) => {
 
         req.session.user = result[0]
         req.session.save()
-        res.redirect('home')
+        res.redirect('/addservice')
     }
     else {
         res.render('signin',{err:'Wrong Email or password'})
@@ -162,7 +162,7 @@ router.post('/postDataSave',async (req,res) => {
     }
     const result = await new Service(_service).save()
     
-    return res.render('home',{admin:req.session.user.admin})
+    return res.render('addservice',{admin:req.session.user.admin})
 
 })
 
